@@ -7,6 +7,8 @@ strengthfac = int(input("Enter the Strength Factor : "))
 data = pd.read_csv("./dataset.csv")
 
 # Create a list of SKU_numbers for products with StrengthFactor greater than the given value
-SKUNumbers = data.loc[data["StrengthFactor"] > strengthfac, "SKU_number"].tolist()
-print(f"the list of SKU Numbers where the StrengthFactor is above {strengthfac} is ")
+SKUNumbers = [
+    sku for sku in data.loc[data["StrengthFactor"] > strengthfac, "SKU_number"]
+]
+print(f"The list of SKU Numbers where the StrengthFactor is above {strengthfac} is:")
 print(SKUNumbers)
