@@ -1,6 +1,7 @@
 # In your main script
 from data_manager import DataManager
 import json
+import pickle
 
 # Create a DataManager instance and perform data operations (loading, filtering, sorting)
 df = DataManager()
@@ -30,3 +31,14 @@ def save_data_to_json(data, json_file):
 
 
 save_data_to_json(data, "filtered_and_sorted_data.json")
+
+
+# loading and saving the data using pickle module:
+# saving
+pickle_file = "filtered_and_sorted_data.pkl"
+file = open(pickle_file, "wb")
+pickle.dump(data, file)
+# loading
+file2 = open(pickle_file, "rb")
+pickledata = pickle.load(file2)
+print(f"Data loaded using Pickle is : {pickledata}")
